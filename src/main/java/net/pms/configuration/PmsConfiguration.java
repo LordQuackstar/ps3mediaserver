@@ -41,6 +41,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
+import javax.swing.AbstractButton;
+
 /**
  * Container for all configurable PMS settings. Settings are typically defined by three things:
  * a unique key for use in the configuration file "PMS.conf", a getter (and setter) method and
@@ -181,7 +183,14 @@ public class PmsConfiguration {
 	private static final String KEY_VLC_SUBTITLE_ENABLED = "VLC_subtitle_enabled";
 	private static final String KEY_VLC_AUDIO_PRI = "VLC_audio_language_priority";
 	private static final String KEY_VLC_SUBTITLE_PRI = "VLC_subtitle_language_priority";
-
+	private static final String KEY_VLC_VIDEO_SCALE = "VLC_video_scale";
+	private static final String KEY_VLC_CODEC_OVERRIDE = "VLC_codec_override";
+	private static final String KEY_VLC_CODEC_VIDEO = "VLC_codec_video";
+	private static final String KEY_VLC_CODEC_AUDIO = "VLC_codec_audio";
+	private static final String KEY_VLC_CODEC_CONTAINER = "VLC_codec_container";
+	private static final String KEY_VLC_SAMPLE_RATE = "VLC_sample_rate";
+	private static final String KEY_VLC_EXTRA_PARAMS = "VLC_extra_parameters";
+	
 	// the name of the subdirectory under which PMS config files are stored for this build (default: PMS).
 	// see Build for more details
 	private static final String PROFILE_DIRECTORY_NAME = Build.getProfileDirectoryName();
@@ -2320,5 +2329,61 @@ public class PmsConfiguration {
 
 	public void setSubtitlePri(String text) {
 		configuration.setProperty(KEY_VLC_SUBTITLE_PRI, text);
+	}
+	
+	public String getSlider() {
+		return getString(KEY_VLC_VIDEO_SCALE, "1.0");
+	}
+
+	public void setSlider(String text) {
+		configuration.setProperty(KEY_VLC_VIDEO_SCALE, text);
+	}
+
+	public boolean getCodecOverride() {
+		return getBoolean(KEY_VLC_CODEC_OVERRIDE, false);
+	}
+	
+	public void setCodecOverride(boolean b) {
+		configuration.setProperty(KEY_VLC_CODEC_OVERRIDE, b);
+	}
+
+	public String getCodecVideo() {
+		return getString(KEY_VLC_CODEC_VIDEO, "");
+	}
+	
+	public void setCodecVideo(String text) {
+		configuration.setProperty(KEY_VLC_CODEC_VIDEO, text);
+	}
+
+	public String getCodecAudio() {
+		return getString(KEY_VLC_CODEC_AUDIO, "");
+	}
+	
+	public void setCodecAudio(String text) {
+		configuration.setProperty(KEY_VLC_CODEC_AUDIO, text);
+	}
+
+	public String getCodecContainer() {
+		return getString(KEY_VLC_CODEC_CONTAINER, "");
+	}
+	
+	public void setCodecContainer(String text) {
+		configuration.setProperty(KEY_VLC_CODEC_CONTAINER, text);
+	}
+
+	public String getSampleRate() {
+		return getString(KEY_VLC_SAMPLE_RATE, "48000");
+	}
+
+	public void setSampleRate(String text) {
+		configuration.setProperty(KEY_VLC_SAMPLE_RATE, text);
+	}
+
+	public String getExtraParams() {
+		return getString(KEY_VLC_EXTRA_PARAMS, "");
+	}
+
+	public void setExtraParams(String text) {
+		configuration.setProperty(KEY_VLC_EXTRA_PARAMS, text);
 	}
 }
