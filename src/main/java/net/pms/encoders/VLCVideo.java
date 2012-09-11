@@ -36,6 +36,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import net.pms.Messages;
+import net.pms.PMS;
 import net.pms.configuration.PmsConfiguration;
 import net.pms.configuration.RendererConfiguration;
 import net.pms.dlna.DLNAMediaInfo;
@@ -46,6 +47,7 @@ import net.pms.io.PipeProcess;
 import net.pms.io.ProcessWrapper;
 import net.pms.io.ProcessWrapperImpl;
 import net.pms.network.HTTPResource;
+import net.pms.newgui.LooksFrame;
 import net.pms.util.FormLayoutUtil;
 
 import org.apache.commons.lang.StringUtils;
@@ -408,6 +410,13 @@ public class VLCVideo extends Player {
 			}
 		});
 		mainPanel.add(subtitlePri, FormLayoutUtil.flip(cc.xy(7, 7), colSpec, orientation));
+		
+		JCheckBox disableSubs = ((LooksFrame) PMS.get().getFrame()).getTr().getDisableSubs();
+		disableSubs.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				subtitlePri.setEnabled(!pmsconfig.isMencoderDisableSubs());
+			}		
+		});
 
 		// Developer stuff. Theoretically is temporary 
 		cmp = mainPanel.addSeparator(Messages.getString("VlcTrans.10"), FormLayoutUtil.flip(cc.xyw(1, 9, 7), colSpec, orientation));
