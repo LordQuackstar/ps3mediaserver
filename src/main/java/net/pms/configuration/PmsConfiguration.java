@@ -41,8 +41,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
-import javax.swing.Icon;
-
 /**
  * Container for all configurable PMS settings. Settings are typically defined by three things:
  * a unique key for use in the configuration file "PMS.conf", a getter (and setter) method and
