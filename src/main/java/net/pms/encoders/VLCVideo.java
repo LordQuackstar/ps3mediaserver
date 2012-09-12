@@ -402,7 +402,7 @@ public class VLCVideo extends Player {
 		
 		mainPanel.addLabel(Messages.getString("VlcTrans.8"), FormLayoutUtil.flip(cc.xy(5, 7), colSpec, orientation));
 		subtitlePri = new JTextField(pmsconfig.getVlcSubtitlePri());
-		subtitlePri.setEnabled(!pmsconfig.isMencoderDisableSubs());
+		subtitlePri.setEnabled(!pmsconfig.isDisableSubtitles());
 		subtitlePri.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -414,7 +414,7 @@ public class VLCVideo extends Player {
 		JCheckBox disableSubs = ((LooksFrame) PMS.get().getFrame()).getTr().getDisableSubs();
 		disableSubs.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				subtitlePri.setEnabled(!pmsconfig.isMencoderDisableSubs());
+				subtitlePri.setEnabled(pmsconfig.isDisableSubtitles());
 			}		
 		});
 
