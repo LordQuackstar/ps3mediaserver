@@ -184,6 +184,7 @@ public class PmsConfiguration {
 	private static final String KEY_VLC_SCALE = "VLC_scale";
 	private static final String KEY_VLC_SAMPLE_RATE_OVERRIDE = "VLC_sample_rate_override";
 	private static final String KEY_VLC_SAMPLE_RATE = "VLC_sample_rate";
+	private static final String KEY_DISABLE_SUBTILES = "disable_subtitles";
 	
 	// the name of the subdirectory under which PMS config files are stored for this build (default: PMS).
 	// see Build for more details
@@ -2347,5 +2348,14 @@ public class PmsConfiguration {
 	
 	public void setVlcSampleRate(String value) {
 		configuration.setProperty(KEY_VLC_SAMPLE_RATE, value);
+	}
+
+	public boolean isDisableSubtitles() {
+		return getBoolean(KEY_DISABLE_SUBTILES, false);
+	}
+
+	public void setDisableSubtitles(boolean value) {
+		configuration.setProperty(KEY_DISABLE_SUBTILES, value);
+		
 	}
 }

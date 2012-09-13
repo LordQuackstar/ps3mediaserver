@@ -603,8 +603,14 @@ public class TranscodingTab {
 		decodeTips.setBackground(new Color(255, 255, 192));
 		builder.add(decodeTips, FormLayoutUtil.flip(cc.xyw(1, 41, 3), colSpec, orientation));
 
-		disableSubs = new JCheckBox(Messages.getString("TrTab2.51"));
+		disableSubs = new JCheckBox(Messages.getString("TrTab2.51"), configuration.isDisableSubtitles());
 		disableSubs.setContentAreaFilled(false);
+		disableSubs.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				configuration.setDisableSubtitles(e.getStateChange() == ItemEvent.SELECTED);
+			}
+		});
 
 		cmp = builder.addSeparator(Messages.getString("TrTab2.7"), FormLayoutUtil.flip(cc.xyw(1, 33, 3), colSpec, orientation));
 		cmp = (JComponent) cmp.getComponent(0);
